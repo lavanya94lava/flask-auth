@@ -3,7 +3,9 @@ from app import app
 from user.models import User
 
 
-@app.route('/user/signup', methods=['GET'])
-def signup():
-    return User().signup()
+# print("aaaaaaaaaaa")
+# @app.route('/user/signup', methods=['GET'])
+# def signup():
+#     print("hiiiiiiii")
+#     return User().signup()
 
