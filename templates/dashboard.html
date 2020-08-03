@@ -6,4 +6,10 @@
         DashBoard
     </h1>
 
+    <div>
+        <strong>ID:</strong>{{session['user']['_id']}}<br>
+        <strong>Name:</strong>{{session['user']['name']}}<br>
+        <strong>Email:</strong>{{session['user']['email']}}
+    </div>
+
 {% endblock%}

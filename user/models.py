@@ -1,9 +1,16 @@
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, session, redirect
 from passlib.hash import pbkdf2_sha256
 from app import db
 import uuid
 
 class User:
+
+    def start_session(self,user):
+        del user['password']
+        session['loggeid_in'] = True
+        session['user'] = user
+        return jsonify(user), 200
+
     def signup(self):
         print("request.form", request.form)
 
@@ -24,6 +31,11 @@ class User:
             return jsonify({"error","Email address already taken"}),400
 
         if db.users.insert_one(user):
-            return jsonify(user), 200
+            return self.start_session(user)
 
         return jsonify({"error":"Signup failed"}), 200
+
+    
+    def signout(self):
+        session.clear()
+        return redirect('/')

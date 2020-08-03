@@ -6,6 +6,7 @@ $("#signup_form").submit(function(e){
     console.log("hiii  AJX")
     var $form = $(this);
     var $error = $form.find(".error");
+    console.log($form)
     var data = $form.serialize();
 
     $.ajax({
@@ -14,7 +15,7 @@ $("#signup_form").submit(function(e){
         data: data,
         dataType:"json",
         success: function(res){
-            console.log(res);
+            window.location.href ="/dashboard/";
         },
         error:function(res){
             console.log(res)
