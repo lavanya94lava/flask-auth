@@ -1,4 +1,4 @@
-from flask import Flask, render_template, session, redirect
+from flask import Flask, render_template, session,request, redirect
 from functools import wraps
 import pymongo
 
@@ -47,7 +47,13 @@ def signup():
 def signout():
     return User().signout()
 
+@app.route('/user/signin', methods= ['GET', 'POST'])
+def signin():
+    if request.method == 'POST':
+        return User().signin()
+    else:
+        return render_template('sign_in.html')
 
-
+        
 if __name__ == "__main__":
     app.run(debug=True) 
